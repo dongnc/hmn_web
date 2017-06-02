@@ -18,12 +18,35 @@ class NavController extends BaseController {
               $url = API_ROOT . "/nav/$startStation/$endStation/shortest" ;
               $response = API::request("GET", $url);
               $result = json_decode($response, true);
-              sleep(1);
-              print_r($result);
+              foreach ($result as $key => $value) {
+                $this->setVar($key, $value);
+              }
+              $time = explode(':', $result['time']);
+              if ($time[0] == '00')
+                $totalTime = intval($time[1]) . " mins";
+              else {
+                $totalTime = intval($time[0]) . " hr " . intval($time[1]) . " mins";
+              }
+              $this->setVar('time', $totalTime);
+              $this->render('navResult');
               break;
 
             case 'leasttransfer':
-
+              $url = API_ROOT . "/nav/$startStation/$endStation/leasttransfer" ;
+              $response = API::request("GET", $url);
+              $result = json_decode($response, true);
+              foreach ($result as $key => $value) {
+                $this->setVar($key, $value);
+              }
+              $time = explode(':', $result['time']);
+              if ($time[0] == '00')
+                $totalTime = intval($time[1]) . " mins";
+              else {
+                $totalTime = intval($time[0]) . " hr " . intval($time[1]) . " mins";
+              }
+              $this->setVar('time', $totalTime);
+              $this->render('navResult');
+              break;
 
             default:
               $this->badRequestResponse();
@@ -35,4 +58,5 @@ class NavController extends BaseController {
         $this->badRequestResponse();
     }
   }
+
 }

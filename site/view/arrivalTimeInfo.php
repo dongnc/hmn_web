@@ -1,8 +1,8 @@
 <h3>Station: <?php echo $stationName ?></h3>
 <?php foreach ($arrivalTimeInfo as $destination) { ?>
   <hr>
-  <h3>Destination: <?php echo $destination['destName'] ?></h3>
-  <div>First train: <?php echo rtrim($destination['firstTrain'], ":00") ?></div>
-  <div>Last train: <?php echo rtrim($destination['lastTrain'], ":00") ?></div>
-  <div>Next train: <?php echo rtrim($destination['nextTrain'], ":00") ?></div>
+  <h4>Towards: <?php echo $destination['destName'] ?></h4>
+  <div>First train: <?php echo substr($destination['firstTrain'], 0, 5) ?></div>
+  <div>Last train: <?php echo substr($destination['lastTrain'], 0, 5) ?></div>
+  <div>Next train: <?php echo substr($destination['nextTrain'], 0,5) ?></div>
 <?php } ?>

@@ -1019,6 +1019,11 @@
     </button>
     <button type="button" id="exchangeBtn" class="btn" onclick="exchangeLocation()"><span class="fa fa-exchange"></span>
     </button>
+    <div class="radioContainer">
+      <label class="radio-inline"><input type="radio" value="shortest" name="routeType" checked="checked">Fastest</label>
+      <label class="radio-inline"><input type="radio" value="leasttransfer" name="routeType">Least transfers</label>
+    </div>
+    <button type="submit" style="display: none"></button>
     <script type="text/javascript">
       (function ($) {
         $(function () {
@@ -1026,6 +1031,10 @@
           $('#selectDestination').selectToAutocomplete();
         });
       })(jQuery);
+
+      $("#selectStartLocation").on('change', naviInput);
+      $("#selectDestination").on('change', naviInput);
+      $('input[name="routeType"]').on('change', naviInput);
 
       function exchangeLocation() {
         console.log("exchange");
@@ -1040,8 +1049,6 @@
         naviInput();
       }
 
-      $("#selectStartLocation").on('change', naviInput);
-      $("#selectDestination").on('change', naviInput);
       function naviInput() {
         console.log('change');
         var startOptionId = $('#selectStartLocation').val();
@@ -1062,7 +1069,9 @@
       function navi(startOptionId, destOptionId) {
         var startId = startOptionId.substr(8);
         var destId = destOptionId.substr(8);
-        $.get("nav/" + startId + "/" + destId + "/shortest", function (data) {
+        var routeType = $('input[name="routeType"]:checked').val();
+        console.log("nav/" + startId + "/" + destId + "/" + routeType);
+        $.get("nav/" + startId + "/" + destId + "/" + routeType, function (data) {
           $("#infoSection").html(data);
         });
       }

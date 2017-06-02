@@ -127,6 +127,10 @@ body {
   transform: rotate(90deg);
 }
 
+.searchBox #naviForm .radioContainer {
+  padding: 5px 0 0 30px;
+}
+
 .sideBar #loading {
   text-align: center;
   margin-top: 80px;
@@ -142,13 +146,41 @@ body {
 }
 
 .sideBar.naviSideBar #loading {
-  margin-top: 130px;
+  margin-top: 150px;
 }
 
 .sideBar.naviSideBar #infoSection {
-  padding-top: 110px;
+  padding-top: 138px;
 }
 
+.naviStation {
+  margin-left: 20px;
+}
+
+.naviStation span {
+  position: relative;
+}
+
+.naviStation span:first-child:before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border: 6px solid #347dcc;
+  display: block;
+  position: absolute;
+  left: -19px;
+  top: 2px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+
+.naviStation div {
+  padding-bottom: 30px;
+  border-left: 3px solid black;
+  margin-left: -15px;
+  padding-left: 12px;
+}
 
 .ui-autocomplete {
   padding: 0;
