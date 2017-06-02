@@ -1,3 +1,9 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 body {
   background-color: #e5ffff;
 }
@@ -5,10 +11,10 @@ body {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  .postion: relative;
+.postion: relative;
 }
 #map img {
-  .border: 1px solid black;
+.border: 1px solid black;
 }
 
 #map .mapButtons {
@@ -38,34 +44,111 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  background-color: white;
   max-width: 350px;
   width: 100%;
-  background-color: white;
-  padding: 10px;
+  height: 100vh;
+.margin-left: -350px;
   box-shadow: 4px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  z-index: -999;
+  transition: all 0.2s;
 }
 
-.sideBar .searchBox {
-  background-color: white;
+.sideBarShow {
+  opacity: 1;
   z-index: 1;
-  padding: 10px;
-  padding-bottom: 0;
-  position: relative;
-  .box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2);
+  transition: all 0.2s;
 }
+
+.searchBox {
+  background-color: white;
+  padding: 10px;
+  margin: 5px;
+  box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  max-width: 330px;
+  width: 100%;
+  z-index: 10;
+}
+
+.searchBox #searchForm input[type=text] {
+  padding-right: 35px;
+}
+
+.searchBox #searchForm .searchBtn {
+  background-color: transparent;
+  position: absolute;
+  right: 45px;
+  top: 3px;
+  z-index: 10;
+  border: none;
+  font-size: 120%;
+  color: #a2a2a2;
+  height: 28px;
+}
+
+.searchBox #searchForm .searchBtn:hover {
+  color: #88d6ff;
+}
+
+.searchBox #searchForm .input-group-btn {
+  padding-left: 5px;
+}
+
+.searchBox #searchForm .naviBtn {
+
+}
+
+.searchBox #naviForm .selectInput {
+  margin-right: 40px;
+}
+
+.searchBox #naviForm .selectInput .selectStartLocationContainer {
+  margin-bottom: 10px;
+}
+
+.searchBox #naviForm #closeNaviBtn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.searchBox #naviForm #exchangeBtn {
+  position: absolute;
+  top: 54px;
+  right: 10px;
+  width: 37px;
+  height: 34px;
+}
+
+.searchBox #naviForm #exchangeBtn .fa {
+  transform: rotate(90deg);
+}
+
 .sideBar #loading {
   text-align: center;
-  padding-top: 20px;
+  margin-top: 80px;
 }
 .sideBar #infoSection {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   overflow-y: auto;
   height: 100%;
   width: 100%;
-  padding: 60px 0 20px 20px;
+  padding: 60px 10px 10px 15px;;
 }
+
+.sideBar.naviSideBar #loading {
+  margin-top: 130px;
+}
+
+.sideBar.naviSideBar #infoSection {
+  padding-top: 110px;
+}
+
 
 .ui-autocomplete {
   padding: 0;

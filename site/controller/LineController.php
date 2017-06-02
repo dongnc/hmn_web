@@ -22,6 +22,10 @@ class LineController extends BaseController {
               $this->getAreaList();
               break;
 
+            case "optionlist":
+              $this->getSelectOptionList();
+              break;
+
             default:
               $this->badRequestResponse();
           }
@@ -45,21 +49,6 @@ class LineController extends BaseController {
           }
         } else $this->badRequestResponse();
         break;
-
-      /* case 3: //API: /lines/xyz/xyz/xyz
-         if (is_numeric($uriElement[0])) {
-           $stationId = $uriElement[0];
-           switch ($uriElement[1]) {
-             case "nexttrain":
-               if (is_numeric($uriElement[2])) {
-                 $arrivalTime = new ArrivalTime();
-                 return $arrivalTime->getNextTrainArrivalTime($stationId, $uriElement[2]);
-               } else $this->badRequestResponse();
-
-             default:
-               $this->badRequestResponse();
-           }
-         } else $this->badRequestResponse();*/
 
       default:
         $this->badRequestResponse();
@@ -100,6 +89,14 @@ class LineController extends BaseController {
       echo '<area href="#" data="line_' . $line['id'] . '" shape="circle" coords="' . $line['coords1'] . '"/>' . PHP_EOL;
       echo '<area href="#" data="line_' . $line['id'] . '" shape="circle" coords="' . $line['coords2'] . '"/>' . PHP_EOL;
     }
+  }
 
+  function getSelectOptionList() {
+    $lineList = json_decode(API::request("GET", API_ROOT . "/line"), true);
+    foreach ($lineList as $line) {
+      $noDiac = Util::noDiacritic($line['name']);
+      $abb = Util::abbreviate($line['name']);
+      echo '<option value="line_' . $line['id'] . '" data-alternative-spellings="'. $noDiac . ' ' . $abb . '"' . '>' . $line['code'] . ": " . $line['name'] . '</option>' . PHP_EOL;
+    }
   }
 }
