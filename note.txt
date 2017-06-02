@@ -1,0 +1,1 @@
+20170501 2325: tạm thời chưa làm chức năng tự thêm tàu vào db, phải tạo tay, chỉ có hàm ktra xem số tàu đã đủ chưa

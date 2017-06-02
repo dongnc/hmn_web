@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hanoi Metro Navigation</title>
+  <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../public/css/perfect-scrollbar.min.css">
+  <link rel="stylesheet" href="../public/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../public/css/jquery-ui.min.css">
+  
+  <link rel="stylesheet" href="../public/css/style.css">
+  <script rel="script" type="text/javascript" src="../public/js/jquery-3.2.1.min.js"></script>
+  <script rel="script" type="text/javascript" src="../public/js/panzoom/jquery.panzoom.min.js"></script>
+  <script rel="script" type="text/javascript" src="../public/js/panzoom/jquery.mousewheel.js"></script>
+  <script rel="script" type="text/javascript" src="../public/js/jquery.imagemapster.min.js"></script>
+  <script rel="script" type="text/javascript" src="../public/js/perfect-scrollbar.jquery.min.js"></script>
+  <script rel="script" type="text/javascript" src="../public/js/jquery-ui.min.js"></script>
+  <script rel="script" type="text/javascript" src="../public/js/jquery.select-to-autocomplete.js"></script>
+
+</head>
+<body>
+<div id="map">
+  <div class="panzoom">
+    <img id="mapImg" src="../public/img/map.png" alt="Hanoi metro map" usemap="#metroMap">
+    <map name="metroMap">
+      <area href="#" data="station_1" shape="rect" coords="2569.04,3812.735,2614.54,3845.235"/>
+      <area href="#" data="station_2" shape="rect" coords="2569.04,3662.735,2614.54,3695.235"/>
+      <area href="#" data="station_3" shape="rect" coords="2569.04,3423.235,2616.79,3455.735"/>
+      <area href="#" data="station_4" shape="rect" coords="2575.415,3195.735,2620.915,3228.235"/>
+      <area href="#" data="station_5" shape="rect" coords="2571.29,2896.235,2616.79,2928.735"/>
+      <area href="#" data="station_6" shape="rect" coords="2571.29,2695.235,2616.79,2727.985"/>
+      <area href="#" data="station_7" shape="rect" coords="2571.29,2507.235,2616.79,2539.735"/>
+      <area href="#" data="station_8" shape="rect" coords="2546.29,2362.235,2591.79,2394.735"/>
+      <area href="#" data="station_9" shape="rect" coords="2598.165,2200,2641.54,2237.235"/>
+      <area href="#" data="station_10" shape="rect" coords="2574.04,2060.5,2619.54,2093"/>
+      <area href="#" data="station_11" shape="rect" coords="2656.54,1964.23,2702.04,1996.73"/>
+      <area href="#" data="station_12" shape="rect" coords="2962.04,1899.985,3007.54,1932.485"/>
+      <area href="#" data="station_13" shape="rect" coords="3156.55,1899.985,3202.05,1932.485"/>
+      <area href="#" data="station_14" shape="rect" coords="3368.665,2060.5,3414.165,2093"/>
+      <area href="#" data="station_15" shape="rect" coords="3364.54,2210.015,3410.04,2242.515"/>
+      <area href="#" data="station_16" shape="rect" coords="3483.67,2210.015,3529.17,2242.515"/>
+      <area href="#" data="station_17" shape="rect" coords="3483.67,2361.735,3529.17,2394.235"/>
+      <area href="#" data="station_18" shape="rect" coords="3483.67,2512.515,3529.17,2545.015"/>
+      <area href="#" data="station_19" shape="rect" coords="3483.67,2662.47,3529.17,2694.97"/>
+      <area href="#" data="station_20" shape="rect" coords="3483.67,2817.365,3529.17,2849.865"/>
+      <area href="#" data="station_21" shape="rect" coords="3632.17,2817.365,3677.67,2849.865"/>
+      <area href="#" data="station_22" shape="rect" coords="2067.615,120.17,2114.425,156.415"/>
+      <area href="#" data="station_23" shape="rect" coords="2267.555,123.915,2313.055,156.415"/>
+      <area href="#" data="station_24" shape="rect" coords="2267.555,349.495,2313.055,381.995"/>
+      <area href="#" data="station_25" shape="rect" coords="2267.555,550.62,2313.055,583.12"/>
+      <area href="#" data="station_26" shape="rect" coords="2267.555,741.905,2313.055,774.405"/>
+      <area href="#" data="station_27" shape="rect" coords="2267.555,971.29,2313.055,1003.79"/>
+      <area href="#" data="station_28" shape="rect" coords="2267.555,1149.88,2313.055,1182.38"/>
+      <area href="#" data="station_29" shape="rect" coords="2168.55,1257.49,2214.05,1299.49"/>
+      <area href="#" data="station_30" shape="rect" coords="2068.92,1359.87,2114.42,1392.37"/>
+      <area href="#" data="station_31" shape="rect" coords="1960.66,1447.03,2006.16,1479.53"/>
+      <area href="#" data="station_32" shape="rect" coords="1960.655,1560.59,2006.155,1593.09"/>
+      <area href="#" data="station_33" shape="rect" coords="1960.655,1688.005,2006.155,1720.505"/>
+      <area href="#" data="station_34" shape="rect" coords="1960.655,1802.42,2006.155,1834.92"/>
+      <area href="#" data="station_35" shape="rect" coords="1960.655,1905.265,2006.155,1987.765"/>
+      <area href="#" data="station_36" shape="rect" coords="2129.55,1905.265,2175.05,1937.765"/>
+      <area href="#" data="station_37" shape="rect" coords="2270.54,1905.265,2316.04,1937.765"/>
+      <area href="#" data="station_38" shape="rect" coords="2416.035,1905.265,2461.535,1987.765"/>
+      <area href="#" data="station_39" shape="rect" coords="2720.495,2060.5,2765.995,2093"/>
+      <area href="#" data="station_40" shape="rect" coords="2747.665,2202.665,2791.3,2237.235"/>
+      <area href="#" data="station_41" shape="rect" coords="2720.495,2361.495,2765.995,2393.995"/>
+      <area href="#" data="station_42" shape="rect" coords="2216.035,2435.615,2461.535,2468.115"/>
+      <area href="#" data="station_43" shape="rect" coords="2416.035,2600.865,2461.535,2633.365"/>
+      <area href="#" data="station_44" shape="rect" coords="2319.805,2727.985,2365.305,2760.485"/>
+      <area href="#" data="station_45" shape="rect" coords="2296.29,2204.735,2341.79,2237.235"/>
+      <area href="#" data="station_46" shape="rect" coords="2268.75,2326,2314.25,2358.5"/>
+      <area href="#" data="station_47" shape="rect" coords="2268.75,2463.735,2314.25,2496.235"/>
+      <area href="#" data="station_48" shape="rect" coords="2268.75,2600.865,2314.25,2633.365"/>
+      <area href="#" data="station_49" shape="rect" coords="2155.29,2917.77,2200.79,2950.27"/>
+      <area href="#" data="station_50" shape="rect" coords="2074.79,3014.73,2120.29,3047.23"/>
+      <area href="#" data="station_51" shape="rect" coords="1975.05,3117.2,2020.55,3149.7"/>
+      <area href="#" data="station_52" shape="rect" coords="1878.79,3210.98,1924.29,3243.48"/>
+      <area href="#" data="station_53" shape="rect" coords="1773.89,3310.73,1819.39,3343.23"/>
+      <area href="#" data="station_54" shape="rect" coords="1698.48,3391.53,1743.98,3424.03"/>
+      <area href="#" data="station_55" shape="rect" coords="1565.79,3536.73,1611.29,3569.23"/>
+      <area href="#" data="station_56" shape="rect" coords="366.465,1760.42,411.965,1792.92"/>
+      <area href="#" data="station_57" shape="rect" coords="534.265,1760.42,579.765,1792.92"/>
+      <area href="#" data="station_58" shape="rect" coords="707.435,1760.42,752.935,1792.92"/>
+      <area href="#" data="station_59" shape="rect" coords="878.275,1760.42,923.775,1792.92"/>
+      <area href="#" data="station_60" shape="rect" coords="1059.515,1776.67,1105.015,1809.17"/>
+      <area href="#" data="station_61" shape="rect" coords="1191.09,1760.42,1236.59,1792.92"/>
+      <area href="#" data="station_62" shape="rect" coords="1261.76,1805.7,1309.26,1840.2"/>
+      <area href="#" data="station_63" shape="poly" coords="1334.76, 1887.02, 1380.26, 1887.02, 1393.42, 1906.75, 1432, 1907.69, 1432, 1940.19, 1386.5, 1940.19, 1380.26, 1955.77, 1334.76, 1955.77"/>
+      <area href="#" data="station_63" shape="poly" coords="667.38, 943.51, 667.38, 977.885, 690.13, 977.885, 693.25, 970.0925, 716, 970.0925, 716, 953.8425, 696.71, 953.3725, 690.13, 943.51, 667.38, 943.51"/>
+      <area href="#" data="station_64" shape="rect" coords="1455.67,2000.04,1501.17,2032.54"/>
+      <area href="#" data="station_65" shape="rect" coords="1564.26,2099.45,1609.76,2131.95"/>
+      <area href="#" data="station_66" shape="rect" coords="1662.76,2186.92,1710.26,2221.42"/>
+      <area href="#" data="station_67" shape="rect" coords="1815.05,2226.265,1860.55,2258.765"/>
+      <area href="#" data="station_68" shape="rect" coords="1965.075,2210.015,2010.575,2242.515"/>
+      <area href="#" data="station_69" shape="rect" coords="2120.315,2208,2165.815,2240.5"/>
+      <area href="#" data="station_70" shape="rect" coords="2420.59,2204.73,2466.09,2237.23"/>
+      <area href="#" data="station_71" shape="rect" coords="2873.265,2363.005,2918.765,2395.505"/>
+      <area href="#" data="station_72" shape="rect" coords="2873.265,2507.235,2918.765,2539.735"/>
+      <area href="#" data="station_73" shape="rect" coords="2873.265,2666.045,2918.765,2920.045"/>
+      <area href="#" data="station_74" shape="rect" coords="2847.765,2815.92,2893.265,2848.42"/>
+      <area href="#" data="station_75" shape="rect" coords="2873.265,2965.42,2918.765,2997.92"/>
+      <area href="#" data="station_76" shape="rect" coords="2897.515,3117.205,2943.015,3149.705"/>
+      <area href="#" data="station_77" shape="rect" coords="1392.95,1229.035,1438.45,1261.535"/>
+      <area href="#" data="station_78" shape="rect" coords="1513.75,1229.035,1559.25,1261.535"/>
+      <area href="#" data="station_79" shape="rect" coords="1666.49,1229.035,1711.99,1261.535"/>
+      <area href="#" data="station_80" shape="rect" coords="1819.07,1229.035,1864.57,1261.535"/>
+      <area href="#" data="station_81" shape="rect" coords="1965.815,1229.035,2011.315,1261.535"/>
+      <area href="#" data="station_82" shape="rect" coords="2106.125,1229.035,2151.625,1261.535"/>
+      <area href="#" data="station_83" shape="rect" coords="2344.375,1229.035,2389.875,1261.535"/>
+      <area href="#" data="station_84" shape="rect" coords="2530.805,1229.035,2576.305,1261.535"/>
+      <area href="#" data="station_85" shape="rect" coords="2747.755,1294.31,2793.255,1326.81"/>
+      <area href="#" data="station_86" shape="rect" coords="2847.09,1395.98,2892.59,1428.48"/>
+      <area href="#" data="station_87" shape="rect" coords="2937.965,1495.975,2983.465,1528.465"/>
+      <area href="#" data="station_88" shape="rect" coords="3049.3,1597.305,3094.8,1629.805"/>
+      <area href="#" data="station_89" shape="rect" coords="3155.665,1701.5,3201.165,1734"/>
+      <area href="#" data="station_90" shape="rect" coords="3240.67,1799.405,3286.17,1831.405"/>
+      <area href="#" data="station_91" shape="rect" coords="3323.135,1881.735,3368.635,1914.235"/>
+      <area href="#" data="station_92" shape="rect" coords="3327.975,2365.37,3373.475,2397.87"/>
+      <area href="#" data="station_93" shape="rect" coords="3327.975,2517.8,3373.475,2550.3"/>
+      <area href="#" data="station_94" shape="rect" coords="3327.975,2658.37,3373.475,2690.87"/>
+      <area href="#" data="station_95" shape="rect" coords="3327.975,2812.57,3373.475,2845.07"/>
+      <area href="#" data="station_96" shape="rect" coords="3125.46,2812.57,3170.96,2845.07"/>
+      <area href="#" data="station_97" shape="rect" coords="2723.125,2814.37,2768.625,2846.87"/>
+      <area href="#" data="station_98" shape="rect" coords="2594.04,2814.37,2639.54,2846.87"/>
+      <area href="#" data="station_99" shape="rect" coords="2412.355,2814.365,2457.855,2846.865"/>
+      <area href="#" data="station_100" shape="rect" coords="2267.12,2814.365,2312.62,2846.865"/>
+      <area href="#" data="station_101" shape="rect" coords="2143.065,2700.77,2188.565,2733.27"/>
+      <area href="#" data="station_102" shape="rect" coords="2040.93,2589.505,2086.43,2622.005"/>
+      <area href="#" data="station_103" shape="rect" coords="1917.555,2469.015,1958.055,2501.515"/>
+      <area href="#" data="station_104" shape="rect" coords="1815.05,2356.3,1860.55,2388.8"/>
+      <area href="#" data="station_105" shape="rect" coords="1815.885,1906.745,1861.385,1939.245"/>
+      <area href="#" data="station_106" shape="rect" coords="1815.885,1763.63,1861.385,1806.13"/>
+      <area href="#" data="station_107" shape="rect" coords="1815.885,1647.015,1861.385,1679.515"/>
+      <area href="#" data="station_108" shape="rect" coords="1740.885,1603.32,1786.385,1635.82"/>
+      <area href="#" data="station_109" shape="rect" coords="1576.555,1601.685,1622.055,1634.185"/>
+      <area href="#" data="station_110" shape="rect" coords="1361.885,1603.32,1407.385,1635.82"/>
+      <area href="#" data="station_111" shape="rect" coords="1209.85,1603.32,1255.35,1635.82"/>
+      <area href="#" data="station_112" shape="rect" coords="1034.555,1533.685,1080.055,1566.185"/>
+      <area href="#" data="station_113" shape="rect" coords="921.27,1458.695,966.77,1491.195"/>
+      <area href="#" data="station_114" shape="rect" coords="774.22,1458.695,819.72,1491.195"/>
+      <area href="#" data="station_115" shape="rect" coords="2041.56,2124.73,2087.06,2170.73"/>
+      <area href="#" data="station_116" shape="rect" coords="2040.93,2356.3,2086.43,2388.8"/>
+      <area href="#" data="station_117" shape="rect" coords="1906.045,2619.525,1954.545,2697.025"/>
+      <area href="#" data="station_118" shape="rect" coords="1759.065,2777.91,1804.565,2810.41"/>
+      <area href="#" data="station_119" shape="rect" coords="1504.515,2781.655,1550.015,2814.155"/>
+      <area href="#" data="station_120" shape="rect" coords="1229.815,2781.655,1275.315,2814.155"/>
+      <area href="#" data="station_121" shape="rect" coords="940.025,2781.655,985.525,2814.155"/>
+      <area href="#" data="station_122" shape="rect" coords="726.19,2781.655,771.69,2814.155"/>
+      <area href="#" data="station_123" shape="rect" coords="540.305,2781.655,585.805,2814.155"/>
+      <area href="#" data="station_124" shape="rect" coords="397.8,2626.145,443.3,2685.645"/>
+      <area href="#" data="station_125" shape="rect" coords="267.055,2492.035,312.555,2524.535"/>
+      <area href="#" data="station_126" shape="rect" coords="115.05,2331.285,160.55,2363.785"/>
+      <area href="#" data="station_127" shape="rect" coords="115.05,2153.705,160.55,2186.205"/>
+      <area href="#" data="station_128" shape="rect" coords="115.05,1980.705,160.55,2013.205"/>
+      <area href="#" data="station_129" shape="rect" coords="115.05,1765.705,160.55,1798.205"/>
+      <area href="#" data="station_130" shape="rect" coords="1809.84,123.915,1855.34,156.415"/>
+      <area href="#" data="station_131" shape="rect" coords="1809.84,287.925,1855.34,320.425"/>
+      <area href="#" data="station_132" shape="rect" coords="1809.84,451.91,1855.34,484.41"/>
+      <area href="#" data="station_133" shape="rect" coords="1809.84,613.405,1855.34,645.905"/>
+      <area href="#" data="station_134" shape="rect" coords="1809.84,781.47,1855.34,813.97"/>
+      <area href="#" data="station_135" shape="rect" coords="1809.84,917.925,1855.34,950.425"/>
+      <area href="#" data="station_136" shape="rect" coords="1809.84,1052.92,1855.34,1085.42"/>
+      <area href="#" data="station_137" shape="rect" coords="1814.155,1316.315,1858.34,1345.42"/>
+      <area href="#" data="station_138" shape="rect" coords="1812.84,1401.26,1858.34,1433.76"/>
+      <area href="#" data="station_139" shape="rect" coords="1777.82,1485.615,1823.32,1518.115"/>
+      <area href="#" data="station_140" shape="rect" coords="1703.66,1561.695,1749.16,1644.195"/>
+      <area href="#" data="station_141" shape="rect" coords="1576.555,1680.25,1622.055,1712.75"/>
+      <area href="#" data="station_142" shape="rect" coords="1476.13,1791.45,1521.63,1823.95"/>
+      <area href="#" data="station_143" shape="rect" coords="1357.51,2142.92,1403.01,2175.42"/>
+      <area href="#" data="station_144" shape="rect" coords="1358.09,2364.25,1403.64,2396.75"/>
+      <area href="#" data="station_145" shape="rect" coords="1358.09,2592.25,1403.64,2647.25"/>
+      <area href="#" data="station_146" shape="rect" coords="1363.33,2801.635,1408.83,2834.135"/>
+      <area href="#" data="station_147" shape="rect" coords="1362.865,3019.86,1408.14,3052.675"/>
+      <area href="#" data="station_148" shape="rect" coords="1364.17,3231.585,1409.67,3264.085"/>
+      <area href="#" data="station_149" shape="rect" coords="1364.84,3448.515,1410.34,3481.015"/>
+      <area href="#" data="station_150" shape="rect" coords="1362.81,3662.735,1408.31,3695.235"/>
+      <area href="#" data="station_151" shape="rect" coords="1526.685,3662.735,1561.035,3695.235"/>
+      <area href="#" data="station_152" shape="rect" coords="1673.7,3662.735,1719.2,3695.235"/>
+      <area href="#" data="station_153" shape="rect" coords="1829.57,3662.735,1875.07,3695.235"/>
+      <area href="#" data="station_154" shape="rect" coords="1973.02,3662.735,2018.52,3695.235"/>
+      <area href="#" data="station_155" shape="rect" coords="2113.055,3662.735,2158.555,3695.235"/>
+      <area href="#" data="station_156" shape="rect" coords="2240.145,3662.735,3695.235,3695.235"/>
+      <area href="#" data="station_157" shape="rect" coords="2376.78,3662.735,2422.28,3695.235"/>
+      <area href="#" data="station_158" shape="rect" coords="1361.885,602.65,1407.385,635.15"/>
+      <area href="#" data="station_159" shape="rect" coords="1361.08,714.405,1406.58,773.905"/>
+      <area href="#" data="station_160" shape="rect" coords="1361.08,865.65,1406.58,898.15"/>
+      <area href="#" data="station_161" shape="rect" coords="1361.08,976.575,1406.58,1009.075"/>
+      <area href="#" data="station_162" shape="rect" coords="1361.08,1105.645,1406.58,1138.145"/>
+      <area href="#" data="station_163" shape="rect" coords="1200.615,1393.2,1246.115,1425.7"/>
+      <area href="#" data="station_164" shape="rect" coords="1057.305,1639.565,1102.805,1672.065"/>
+      <area href="#" data="station_165" shape="rect" coords="1057.305,1948.545,1102.805,1981.045"/>
+      <area href="#" data="station_166" shape="rect" coords="1057.305,2140.805,1102.805,2173.155"/>
+      <area href="#" data="station_167" shape="rect" coords="1057.305,2364.905,1102.805,2397.405"/>
+      <area href="#" data="station_168" shape="rect" coords="1057.305,2592.65,1102.805,2625.15"/>
+      <area href="#" data="station_169" shape="rect" coords="1057.305,2806.65,1102.805,2839.15"/>
+      <area href="#" data="station_170" shape="rect" coords="1057.305,2945.315,1102.805,2977.815"/>
+      <area href="#" data="station_171" shape="rect" coords="1239.87,2945.19,1289.87,2977.69"/>
+      <area href="#" data="station_172" shape="rect" coords="1425.87,2945.19,1421.37,2977.69"/>
+      <area href="#" data="station_173" shape="rect" coords="1527.035,3068.645,1572.535,3101.145"/>
+      <area href="#" data="station_174" shape="rect" coords="1527.035,3208.15,1572.535,3240.65"/>
+      <area href="#" data="station_175" shape="rect" coords="1527.035,3353,1572.535,3385.5"/>
+      <area href="#" data="station_176" shape="rect" coords="1716.85,3536.73,1762.35,3569.23"/>
+      <area href="#" data="station_177" shape="rect" coords="884.695,2336.565,930.195,2369.065"/>
+      <area href="#" data="station_178" shape="rect" coords="884.695,2204.565,930.195,2237.065"/>
+      <area href="#" data="station_179" shape="rect" coords="884.695,2048.705,930.195,2081.205"/>
+      <area href="#" data="station_180" shape="rect" coords="884.695,1912.03,930.195,1944.53"/>
+      <area href="#" data="station_181" shape="rect" coords="1213.445,1910.55,1258.945,1943.05"/>
+      <area href="#" data="station_182" shape="rect" coords="1511.06,1907.685,1556.56,1940.185"/>
+      <area href="#" data="station_183" shape="rect" coords="1664.76,1907.685,1710.26,1940.185"/>
+      <area href="#" data="station_184" shape="rect" coords="1664.76,2403.85,1710.26,2436.35"/>
+      <area href="#" data="station_185" shape="rect" coords="1765.05,2553.265,1860.55,2585.765"/>
+      <area href="#" data="station_186" shape="rect" coords="2040.93,2783.19,2086.43,2815.69"/>
+      <area href="#" data="station_187" shape="rect" coords="2289.87,3030.98,2335.37,3063.48"/>
+      <area href="#" data="station_188" shape="rect" coords="2385.5,3117.205,2431,3149.705"/>
+      <area href="#" data="station_189" shape="rect" coords="2513.03,3117.205,2558.53,3149.705"/>
+      <area href="#" data="station_190" shape="rect" coords="2672.385,3117.205,2717.885,3149.705"/>
+      <area href="#" data="station_191" shape="rect" coords="3125.46,3117.205,3170.96,3149.705"/>
+      <area href="#" data="station_192" shape="rect" coords="3327.975,3117.205,3373.475,3149.705"/>
+      <area href="#" data="station_193" shape="rect" coords="3474.435,3117.205,3519.705,3149.705"/>
+      <area href="#" data="station_194" shape="rect" coords="3474.435,2966.44,3519.935,2998.94"/>
+      <area href="#" data="line_1" shape="circle" coords=" 2587.85, 3918.17, 42"/>
+      <area href="#" data="line_1" shape="circle" coords=" 3654.29, 2753.73, 42"/>
+      <area href="#" data="line_2" shape="circle" coords=" 2103.22, 70.7, 42"/>
+      <area href="#" data="line_2" shape="circle" coords=" 2503.53, 2727.99, 42"/>
+      <area href="#" data="line_3" shape="circle" coords=" 2293.29, 2102.5, 42"/>
+      <area href="#" data="line_3" shape="circle" coords=" 1515.29, 3439.49, 42"/>
+      <area href="#" data="line_4" shape="circle" coords=" 293.64, 1776.67, 42"/>
+      <area href="#" data="line_4" shape="circle" coords=" 2893.27, 3202.67, 42"/>
+      <area href="#" data="line_5" shape="circle" coords=" 1248.16, 1241.99, 42"/>
+      <area href="#" data="line_5" shape="circle" coords=" 702.8, 1477.4, 42"/>
+      <area href="#" data="line_6" shape="circle" coords=" 132.67, 1624.85, 42"/>
+      <area href="#" data="line_6" shape="circle" coords=" 2165.82, 1985.77, 42"/>
+      <area href="#" data="line_7" shape="circle" coords=" 2012.94, 70.7, 42"/>
+      <area href="#" data="line_7" shape="circle" coords=" 2667.48, 3679.83, 42"/>
+      <area href="#" data="line_8" shape="circle" coords=" 1392.95, 473.91, 42"/>
+      <area href="#" data="line_8" shape="circle" coords=" 1852.32, 3761.24, 42"/>
+      <area href="#" data="line_9" shape="circle" coords=" 901.03, 2427.78, 42"/>
+      <area href="#" data="line_9" shape="circle" coords=" 3580.67, 2886.11, 42"/>
+    
+    </map>
+  </div>
+  <div class="mapButtons">
+    <div>
+      <button class="zoom-in">+</button>
+    </div>
+    <div class="rangeSlide"><input type="range" class="zoom-range"></div>
+    <div>
+      <button class="zoom-out">-</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var $section = $('#map');
+    var $panzoom = $section.find('.panzoom').panzoom({
+        $zoomIn: $section.find(".zoom-in"),
+        $zoomOut: $section.find(".zoom-out"),
+        $zoomRange: $section.find(".zoom-range"),
+        //$reset: $section.find(".reset"),
+        //contain: 'invert',
+        minScale: 0.3,
+        maxScale: 1.5
+      }
+    ).panzoom('zoom');
+    $panzoom.parent().on('mousewheel.focal', function (e) {
+      e.preventDefault();
+      var delta = e.delta || e.originalEvent.wheelDelta;
+      var zoomOut = delta ? delta < 0 : e.originalEvent.deltaY > 0;
+      $panzoom.panzoom('zoom', zoomOut, {
+        animate: false,
+        focal: e
+      });
+    });
+    $panzoom.panzoom("zoom", 1);
+    $panzoom.panzoom("pan", -1500, -1700);
+  })();
+</script>
+<script>
+  var $section = $('#map');
+  $panzoom = $section.find('.panzoom');
+  function pan() {
+    $panzoom.panzoom("pan", 100, -100, {relative: true});
+  }
+  function resetPan() {
+    $panzoom.panzoom("zoom", 1, {animate: true});
+    $panzoom.panzoom("pan", -1500, -1700);
+  }
+  function zoom() {
+    $panzoom.panzoom("zoom", 3, {animate: true});
+  }
+
+</script>
+
+<!-- image mapster -->
+<script>
+  $(document).on({
+    ajaxStart: function() {
+      $("#infoSection").html("");
+      $('#loading').show();
+    },
+    ajaxStop: function() { $('#loading').hide() ; }
+  });
+  // image mapster
+  $('#mapImg').mapster({
+    // render option
+    fill: false,
+    stroke: true,
+    strokeWidth: 2,
+    hightlight: true,
+    render_highlight: {
+      strokeColor: '00ff00'
+    },
+    render_select: {
+      strokeColor: 'ff0000'
+    },
+    showToolTip: true,
+    // click option
+    mapKey: 'data',
+    onClick: function getInfo(e) {
+      var key = e.key;
+      $(".sideBar").css("height", "100vh");
+      if (key.search("station") === 0) {
+        var stationId = key.substr(8);
+        // begin AJAX
+        $.get("../site/controller/getInfo.php?stationid=" + stationId, function (data) {
+          $("#infoSection").html(data);
+        });
+        $.ajax({
+          url: "../site/controller/getStationName.php?stationid=" + stationId,
+          global: false,
+          success: function (data) {
+            $("input[name='search']").val(data);
+          }
+        });
+      }
+      else if (key.search("line") === 0) {
+        var lineId = key.substr(5);
+      }
+    }
+  });
+
+</script>
+<div class="sideBar">
+  <div class="searchBox">
+    <form>
+      <div class="input-groupx">
+        <!--<input type="text" class="form-control" name="search" placeholder="Enter your search">-->
+        <script type="text/javascript">
+          /*$(document).ready(function() {
+            $("#selectSearch").select2({
+              placeholder: "Enter your search",
+              allowClear: true});
+          });*/
+        </script>
+        <script>
+          (function($){
+            $(function(){
+              $('#selectSearch').selectToAutocomplete();
+            });
+          })(jQuery);
+        </script>
+  
+        <select id="selectSearch" class="form-control">
+          <option value="station_170">An Thọ</option>
+          <option value="station_152">Ba La</option>
+          <option value="station_129">Ba vì</option>
+          <option value="station_122">Bắc An Khánh</option>
+          <option value="station_7">Bạch Mai</option>
+          <option value="station_37">Bách Thảo</option>
+          <option value="station_159">Bảo Tháp</option>
+          <option value="station_94">Bát Khối</option>
+          <option value="station_117">BigC Thăng Long</option>
+          <option value="station_35">Bưởi</option>
+          <option value="station_52">BX Hà Đông</option>
+          <option value="station_55">BX Hà Đông mới</option>
+          <option value="station_180">Cao Xá Thượng</option>
+          <option value="station_45">Cát Linh</option>
+          <option value="station_179">Cát Quế</option>
+          <option value="station_64">Cầu Diễn</option>
+          <option value="station_68">Cầu Giấy</option>
+          <option value="station_156">Cầu Sắt</option>
+          <option value="station_67">Chùa Hà</option>
+          <option value="station_147">Chùa Văn</option>
+          <option value="station_107">Cổ Nhuế</option>
+          <option value="station_104">Cv Cầu Giấy</option>
+          <option value="station_141">Cv Hòa Bình</option>
+          <option value="station_8">Cv THống Nhất</option>
+          <option value="station_182">Doãn Kế Thiện</option>
+          <option value="station_148">Dương Nội</option>
+          <option value="station_20">Dương Xá</option>
+          <option value="station_185">Dương Đình Nghệ</option>
+          <option value="station_9">Ga Hà Nội</option>
+          <option value="station_153">Ga Hà Đông</option>
+          <option value="station_13">Gia Lâm</option>
+          <option value="station_14">Gia Thụy</option>
+          <option value="station_60">Giang Xá</option>
+          <option value="station_5">Giáp Bát</option>
+          <option value="station_97">Gốc Đề</option>
+          <option value="station_78">Hạ Lôi</option>
+          <option value="station_112">Hạ Trì</option>
+          <option value="station_51">Hà Đông</option>
+          <option value="station_137">Hải Bối</option>
+          <option value="station_11">Hàng Đậu</option>
+          <option value="station_39">Hồ Hoàn Kiếm</option>
+          <option value="station_116">Hồ Ngọc Khánh</option>
+          <option value="station_38">Hồ Tây</option>
+          <option value="station_134">Hồ Vân Trì</option>
+          <option value="station_126">Hòa Lạc</option>
+          <option value="station_4">Hoàng Liệt</option>
+          <option value="station_89">Hội Phụ</option>
+          <option value="station_194">HV Nông Nghiệp</option>
+          <option value="station_131">KCN Quang Minh</option>
+          <option value="station_93">KCN Sài Đồng B</option>
+          <option value="station_80">KCN Thăng Long</option>
+          <option value="station_155">Kiến Hưng</option>
+          <option value="station_136">Kim Chung</option>
+          <option value="station_187">Kim Giang</option>
+          <option value="station_42">Kim Liên</option>
+          <option value="station_69">Kim Mã</option>
+          <option value="station_82">Kim Nô</option>
+          <option value="station_83">Kim Nô 2</option>
+          <option value="station_158">Kim Tiến</option>
+          <option value="station_92">KTT  981</option>
+          <option value="station_105">KTT Nghĩa Tân</option>
+          <option value="station_175">KĐT An Hưng</option>
+          <option value="station_193">KĐT Ecopark</option>
+          <option value="station_190">KĐT Linh Đàm</option>
+          <option value="station_77">KĐT Mê Linh</option>
+          <option value="station_121">KĐT Splendora</option>
+          <option value="station_176">KĐT Văn La</option>
+          <option value="station_191">KĐT Yên Duyên</option>
+          <option value="station_173">La Dương</option>
+          <option value="station_53">La Khê</option>
+          <option value="station_174">La Nội</option>
+          <option value="station_149">La Phù</option>
+          <option value="station_46">La Thành</option>
+          <option value="station_150">La Tinh</option>
+          <option value="station_168">Lại Yên</option>
+          <option value="station_48">Láng</option>
+          <option value="station_101">Láng Hạ</option>
+          <option value="station_28">Lê Pháp</option>
+          <option value="station_186">Lê Văn Lương</option>
+          <option value="station_65">Lê Đức Thọ</option>
+          <option value="station_114">Liên Hà</option>
+          <option value="station_109">Liên Mạc</option>
+          <option value="station_115">Liễu Giai</option>
+          <option value="station_71">Lò Đúc</option>
+          <option value="station_12">Long Biên Nam</option>
+          <option value="station_166">Lũng Kênh</option>
+          <option value="station_165">Lưu Xá</option>
+          <option value="station_143">Mai Dịch</option>
+          <option value="station_118">Mễ Trì</option>
+          <option value="station_62">Minh Khai</option>
+          <option value="station_145">Mỹ Đình</option>
+          <option value="station_171">Nam An Khánh</option>
+          <option value="station_133">Nam Hồng</option>
+          <option value="station_32">Nam Thăng Long</option>
+          <option value="station_125">Ngô Sài</option>
+          <option value="station_33">Ngoại Giao Đoàn</option>
+          <option value="station_30">Ngọc Giang</option>
+          <option value="station_1">Ngọc Hồi</option>
+          <option value="station_96">Nguyễn Khoái</option>
+          <option value="station_31">Nhật Tân</option>
+          <option value="station_138">Nhật Tảo</option>
+          <option value="station_61">Nhổn</option>
+          <option value="station_21">Như Quỳnh</option>
+          <option value="station_22">Nội Bài</option>
+          <option value="station_130">Phú Cường</option>
+          <option value="station_63">Phú Diễn</option>
+          <option value="station_154">Phú Lương</option>
+          <option value="station_160">Phú Trì</option>
+          <option value="station_119">Phú Đô</option>
+          <option value="station_15">Phúc Đồng</option>
+          <option value="station_57">Phùng</option>
+          <option value="station_10">Phùng Hưng</option>
+          <option value="station_181">Phương Canh</option>
+          <option value="station_6">Phương Liệt</option>
+          <option value="station_36">Quần Ngựa</option>
+          <option value="station_124">Sài Sơn</option>
+          <option value="station_16">Sài Đồng</option>
+          <option value="station_26">Sơn Du</option>
+          <option value="station_177">Sơn Đồng</option>
+          <option value="station_123">Song Phương</option>
+          <option value="station_157">Tả Thanh Oai</option>
+          <option value="station_75">Tân Mai</option>
+          <option value="station_59">Tân Tây Đô</option>
+          <option value="station_139">Tân Xuân</option>
+          <option value="station_34">Tây Hồ Tây</option>
+          <option value="station_146">Tây Mỗ</option>
+          <option value="station_164">Tây Tựu</option>
+          <option value="station_17">Thạch Bàn</option>
+          <option value="station_18">Thạch Cầu</option>
+          <option value="station_47">Thái Hà</option>
+          <option value="station_23">Thái Phù</option>
+          <option value="station_73">Thanh Nhàn</option>
+          <option value="station_50">Thanh Xuân 3</option>
+          <option value="station_135">Thôn Nhuế</option>
+          <option value="station_142">Thôn Trù 2</option>
+          <option value="station_113">Thôn Trung</option>
+          <option value="station_132">Thôn Vệ</option>
+          <option value="station_24">Thôn Đông</option>
+          <option value="station_95">Thống Nhất</option>
+          <option value="station_111">Thượng Cát</option>
+          <option value="station_163">Thường Lệ</option>
+          <option value="station_91">Thượng Thanh</option>
+          <option value="station_44">Thượng Đình</option>
+          <option value="station_192">Thúy Lĩnh</option>
+          <option value="station_79">Tiền Phong</option>
+          <option value="station_74">Times City</option>
+          <option value="station_184">Tôn Thất Thuyết</option>
+          <option value="station_99">Tôn Thất Tùng</option>
+          <option value="station_86">Trại Cầm</option>
+          <option value="station_178">Trại Giá</option>
+          <option value="station_106">Trần Cung</option>
+          <option value="station_40">Trần Hưng Đạo</option>
+          <option value="station_19">Trâu Quỳ</option>
+          <option value="station_56">Trôi</option>
+          <option value="station_102">Trung Hòa</option>
+          <option value="station_27">Trung Oai</option>
+          <option value="station_172">TĐ Bảo Sơn</option>
+          <option value="station_54">Văn Khê</option>
+          <option value="station_70">Văn Miếu</option>
+          <option value="station_87">Văn Thượng</option>
+          <option value="station_84">Vân Trì</option>
+          <option value="station_3">Văn Điển</option>
+          <option value="station_49">Vành đai 3</option>
+          <option value="station_29">VĨnh Ngọc</option>
+          <option value="station_2">Vĩnh Quỳnh</option>
+          <option value="station_85">Võ Nguyên Giáp</option>
+          <option value="station_81">Võ Văn Kiệt</option>
+          <option value="station_98">Vọng</option>
+          <option value="station_144">Xuân Phương</option>
+          <option value="station_140">Xuân ĐỈnh</option>
+          <option value="station_128">Yên Bài</option>
+          <option value="station_167">Yên Bệ</option>
+          <option value="station_103">Yên Hòa</option>
+          <option value="station_151">Yên Lộ</option>
+          <option value="station_169">Yên Lũng</option>
+          <option value="station_76">Yên Sở</option>
+          <option value="station_161">Yên Vinh</option>
+          <option value="station_25">Đại Bằng</option>
+          <option value="station_110">Đại Cát</option>
+          <option value="station_41">Đại Cồ Việt</option>
+          <option value="station_189">Đại Kim</option>
+          <option value="station_120">Đại Mỗ</option>
+          <option value="station_162">Đại Thịnh</option>
+          <option value="station_108">ĐH Mỏ</option>
+          <option value="station_188">ĐH Thăng Long</option>
+          <option value="station_183">ĐH Điện Lực</option>
+          <option value="station_100">ĐHQG 1</option>
+          <option value="station_66">ĐHQG 2</option>
+          <option value="station_43">Định Công</option>
+          <option value="station_88">Đông Hội</option>
+          <option value="station_72">Đông Mác</option>
+          <option value="station_127">Đồng Mô</option>
+          <option value="station_90">Đông Trù</option>
+          <option value="station_58">Đức Thượng</option>
+
+        </select>
+        <!--<span class="input-group-btn">
+        <button class="btn btn-secondary" type="button"><i class="fa fa-compass"></i></button>
+      </span>-->
+        <script>
+          $("#selectSearch").on('change', function() {
+            $(".sideBar").css("height", "100vh");
+            var searchStr = $('#selectSearch').val();
+            if (searchStr.search("station") === 0) {
+              var stationId = searchStr.substr(8);
+              $.get("../site/controller/getInfo.php?stationid=" + stationId, function (data) {
+                $("#infoSection").html(data);
+              });
+            }
+          });
+        </script>
+      </div>
+    </form>
+  </div>
+  <div id="loading" style="display: none;">
+    <img  src="../public/img/ajax-loader.gif">
+  </div>
+  <div id="infoSection" class="">
+  </div>
+  <script>
+    $('#infoSection').perfectScrollbar();
+  </script>
+</div>
+</body>
+</html>
