@@ -55,12 +55,6 @@ body {
   transition: all 0.2s;
 }
 
-.sideBarShow {
-  opacity: 1;
-  z-index: 1;
-  transition: all 0.2s;
-}
-
 .searchBox {
   background-color: white;
   padding: 10px;
@@ -142,7 +136,33 @@ body {
   overflow-y: auto;
   height: 100%;
   width: 100%;
-  padding: 60px 10px 10px 15px;;
+  padding: 60px 10px 10px 15px;
+  opacity: 0;
+  transition: all 0.15s;
+}
+
+.sideBar #infoSection h3:first-child {
+ padding-right: 40px;
+}
+
+.sideBar #infoCloseBtn {
+  position: absolute;
+  right: 10px;
+  top: 70px;
+  background-color: transparent;
+  font-size: 140%;
+  z-index: 100;
+}
+
+.sideBarShow {
+  opacity: 1;
+  z-index: 1;
+  transition: all 0.2s;
+}
+
+.sideBarShow #infoSection {
+  opacity: 1;
+  transition: all 0.15s;
 }
 
 .sideBar.naviSideBar #loading {
@@ -151,6 +171,15 @@ body {
 
 .sideBar.naviSideBar #infoSection {
   padding-top: 138px;
+}
+
+.sideBar #infoSection h3:first-child {
+  padding-right: 0;
+}
+
+.sideBar.naviSideBar #infoCloseBtn {
+  top: 130px;
+  display: none;
 }
 
 .naviStation {

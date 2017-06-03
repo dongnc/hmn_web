@@ -17,12 +17,13 @@
   <script rel="script" type="text/javascript" src="public/js/perfect-scrollbar.jquery.min.js"></script>
   <script rel="script" type="text/javascript" src="public/js/jquery-ui.min.js"></script>
   <script rel="script" type="text/javascript" src="public/js/jquery.select-to-autocomplete.js"></script>
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 </head>
 <body>
 <div id="map">
   <div class="panzoom">
-    <!-- <img id="mapImg" src="public/img/map.png" alt="Hanoi metro map" usemap="#metroMap">
+     <img id="mapImg" src="public/img/map.png" alt="Hanoi metro map" usemap="#metroMap">
      <map name="metroMap">
        <area href="#" data="station_170" shape="rect" coords="1057.31, 2945.32, 1102.81, 2977.82"/>
        <area href="#" data="station_152" shape="rect" coords="1673.7, 3662.74, 1719.2, 3695.24"/>
@@ -237,7 +238,7 @@
        <area href="#" data="line_8" shape="circle" coords="1852.32, 3761.24, 42"/>
        <area href="#" data="line_9" shape="circle" coords="901.03, 2427.78, 42"/>
        <area href="#" data="line_9" shape="circle" coords="3580.67, 2886.11, 42"/>
-     </map>-->
+     </map>
   </div>
   <div class="mapButtons">
     <div>
@@ -311,7 +312,7 @@
     // render option
     fill: false,
     stroke: true,
-    strokeWidth: 2,
+    strokeWidth: 4,
     hightlight: true,
     render_highlight: {
       strokeColor: '00ff00'
@@ -323,6 +324,7 @@
     // click option
     mapKey: 'data',
     onClick: function getInfo(e) {
+      $('area').mapster('deselect'); //deselect all area
       if (state === 'info') {
         var key = e.key;
         $(".sideBar").addClass('sideBarShow');
@@ -351,6 +353,22 @@
               $("#searchForm :input").val(data);
             }
           });
+        }
+      } else { //////////////////////////// navi state
+        var key = e.key;
+        console.log("key" + key);
+        if ( $('.selectStartLocationContainer :input').is(":focus")) {
+          $('#selectStartLocation').val(key);
+          $('.selectStartLocationContainer :input').val($('#selectStartLocation option:selected').text());
+          //$('.selectStartLocationContainer :input').click();
+          $('.selectDestinationContainer :input').focus();
+          naviInput();
+        } else if ($('.selectDestinationContainer :input').is(":focus")) {
+          $('#selectDestination').val(key);
+          $('.selectDestinationContainer :input').val($('#selectDestination option:selected').text());
+          //$('.selectDestinationContainer :input').click();
+          $('.selectStartLocationContainer :input').focus();
+          naviInput();
         }
       }
     }
@@ -607,6 +625,8 @@
               $("#infoSection").html(data);
             });
           }
+          $('area').mapster('deselect');
+          $('#mapImg').mapster('set',true,optionId);
         }
         return false;
       }
@@ -1053,6 +1073,7 @@
         console.log('change');
         var startOptionId = $('#selectStartLocation').val();
         var destOptionId = $('#selectDestination').val();
+        console.log("naviInput " + startOptionId, destOptionId);
         if (startOptionId === '' && destOptionId === '') return false;
         if (startOptionId !== '') {
           if (destOptionId === '') {
@@ -1067,9 +1088,14 @@
       }
 
       function navi(startOptionId, destOptionId) {
+        console.log(startOptionId, destOptionId);
         var startId = startOptionId.substr(8);
         var destId = destOptionId.substr(8);
-        var routeType = $('input[name="routeType"]:checked').val();
+        var routeType = $('#naviForm input[name="routeType"]:checked').val();
+        if (routeType === '') {
+          routeType = 'shortest';
+          $('input[name="routeType"]:checked').val('shortest');
+        }
         console.log("nav/" + startId + "/" + destId + "/" + routeType);
         $.get("nav/" + startId + "/" + destId + "/" + routeType, function (data) {
           $("#infoSection").html(data);
@@ -1083,6 +1109,7 @@
   <div id="loading" style="display: none;">
     <img src="public/img/ajax-loader.gif">
   </div>
+  <button type="button" id="infoCloseBtn" class="btn" onclick="closeInfo()"><i class="fa fa-times"></i></button>
   <div id="infoSection" class="">
   </div>
   <script>
@@ -1098,6 +1125,7 @@
         $("#naviForm").show();
         $(".sideBar").addClass('sideBarShow');
         $(".sideBar").addClass('naviSideBar');
+        $('.selectStartLocationContainer :input').focus();
       } else {
         state = 'info';
         $("#naviForm :input").val('');
@@ -1105,9 +1133,19 @@
         $("#naviForm").hide();
         $(".sideBar").removeClass('sideBarShow');
         $(".sideBar").removeClass('naviSideBar');
+        $('area').mapster('deselect');
+        $("#searchForm :input").focus();
       }
     }
 
+    $('#infoCloseBtn').on('click',closeInfo);
+    function closeInfo() {
+      console.log('ss');
+      $("#naviForm :input").val('');
+      $(".sideBar").removeClass('sideBarShow');
+      $('area').mapster('deselect');
+      $("#searchForm :input").focus();
+    }
   </script>
 </div>
 </body>

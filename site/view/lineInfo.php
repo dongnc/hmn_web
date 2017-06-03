@@ -13,3 +13,15 @@
   }
 ?>
 <div>Total time: <?php echo $totalTime; ?></div>
+
+<?php
+$keys = '';
+foreach ($route as $station) {
+  $keys = $keys . "station_" . $station['id'] . ",";
+}
+$keys = rtrim($keys,',');
+?>
+<script type="text/javascript">
+  $('area').mapster('deselect');
+  $('#mapImg').mapster('set',true,'<?php echo $keys ?>');
+</script>

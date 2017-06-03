@@ -1,4 +1,4 @@
-<div class="row">
+<div>
   <div class="col-xs-6">
     <h3><?php echo $time ?></h3>
   </div>
@@ -21,3 +21,15 @@
 <div class="naviStation">
   <span>Arrival at <strong><?php echo $route[count($route)-1]['stationName']?></strong></span>
 </div>
+
+<?php
+  $keys = '';
+  foreach ($route as $station) {
+    $keys = $keys . "station_" . $station['stationId'] . ",";
+  }
+  $keys = rtrim($keys,',');
+  ?>
+<script type="text/javascript">
+  $('area').mapster('deselect');
+  $('#mapImg').mapster('set',true,'<?php echo $keys ?>');
+</script>
