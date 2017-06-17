@@ -378,7 +378,8 @@
 <div class="searchBox">
   <form id="searchForm" onsubmit="return search()">
     <div class="input-group">
-      <select id="selectSearch" class="form-control" placeholder="Type station or line">
+      <div class="selectSearchContainer">
+        <select id="selectSearch" class="form-control" placeholder="Type station or line">
         <option value=""></option>
         <option value="station_170" data-alternative-spellings="An Tho AT">An Thọ</option>
         <option value="station_152" data-alternative-spellings="Ba La BL">Ba La</option>
@@ -596,6 +597,7 @@
 
 
       </select>
+      </div>
       <button class="searchBtn" type="submit"><i class="fa fa-search"></i></button>
       <span class="input-group-btn">
         <button id="naviBtn" class="btn naviBtn" type="button" onclick="changeState()"><i
@@ -1091,7 +1093,8 @@
         console.log(startOptionId, destOptionId);
         var startId = startOptionId.substr(8);
         var destId = destOptionId.substr(8);
-        var routeType = $('#naviForm input[name="routeType"]:checked').val();
+        var routeType = $('#naviForm :input[name="routeType"]:checked').val();
+        console.log("routeType" + routeType);
         if (routeType === '') {
           routeType = 'shortest';
           $('input[name="routeType"]:checked').val('shortest');
@@ -1141,10 +1144,10 @@
     $('#infoCloseBtn').on('click',closeInfo);
     function closeInfo() {
       console.log('ss');
-      $("#naviForm :input").val('');
+      $("#searchForm :input").val('');
       $(".sideBar").removeClass('sideBarShow');
       $('area').mapster('deselect');
-      $("#searchForm :input").focus();
+      $(".selectSearchContainer :input").focus();
     }
   </script>
 </div>

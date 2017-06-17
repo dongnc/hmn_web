@@ -13,6 +13,9 @@ class NavController extends BaseController {
         if (is_numeric($uriElement[0]) && is_numeric($uriElement[1])) {
           $startStation = $uriElement[0];
           $endStation = $uriElement[1];
+          if ($startStation == $endStation) {
+            echo "Start postition is the same as destination!";
+          } else
           switch ($uriElement[2]) {
             case 'shortest':
               $url = API_ROOT . "/nav/$startStation/$endStation/shortest" ;

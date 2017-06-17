@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #e5ffff;
+  /*background-color: #e5ffff;*/
 }
 #map {
   width: 100%;
@@ -173,7 +173,7 @@ body {
   padding-top: 138px;
 }
 
-.sideBar #infoSection h3:first-child {
+.sideBar.naviSideBar #infoSection h3:first-child {
   padding-right: 0;
 }
 
