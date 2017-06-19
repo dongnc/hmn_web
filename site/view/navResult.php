@@ -30,6 +30,8 @@
   $keys = rtrim($keys,',');
   ?>
 <script type="text/javascript">
-  $('area').mapster('deselect');
-  $('#mapImg').mapster('set',true,'<?php echo $keys ?>');
+  setTimeout(function() {
+    $('area').mapster('deselect');
+    $('#mapImg').mapster('set', true, '<?php echo $keys ?>');
+  }, 100);
 </script>

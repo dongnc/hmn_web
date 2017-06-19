@@ -130,7 +130,7 @@ body {
   margin-top: 80px;
 }
 .sideBar #infoSection {
-  position: relative;
+  position: absolute;
   top: 0;
   left: 0;
   overflow-y: auto;

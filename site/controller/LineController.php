@@ -69,6 +69,7 @@ class LineController extends BaseController {
     foreach ($line as $key => $value) {
       $this->setVar($key, $value);
     }
+    $this->setVar('lineId', @$lineId);
     $this->render('lineInfo');
   }
 

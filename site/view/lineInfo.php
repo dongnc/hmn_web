@@ -15,29 +15,16 @@
 <div>Total time: <?php echo $totalTime; ?></div>
 
 <?php
-/*$keys = '';
+$keys = "line_$lineId,";
 foreach ($route as $station) {
   $keys = $keys . "station_" . $station['id'] . ",";
 }
 $keys = rtrim($keys,',');
-*/?><!--
-<script type="text/javascript">
-  $('area').mapster('deselect');
-  $('#mapImg').mapster('set',true,'<?php /*echo $keys */?>');
-</script>-->
-
-<script type="text/javascript">
-  $('area').mapster('deselect');
-  mapImg = $('#mapImg');
-
-<?php
-foreach ($route as $station) {
-  $key = "station_" . $station['id'];
 ?>
-  setTimeout(function(){
-    mapImg.mapster('set',true,'<?php echo $key ?>');
-    }, 1);
-<?php
-}
-?>
+<script type="text/javascript">
+  setTimeout(function() {
+    $('area').mapster('deselect');
+    $('#mapImg').mapster('set', true, '<?php echo $keys ?>');
+  }, 100);
 </script>
+
